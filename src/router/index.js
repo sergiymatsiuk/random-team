@@ -1,22 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import StartPage from '../views/StartPage.vue'
+import TwoFive from '../views/TwoFive.vue'
+import ThreeFive from '../views/ThreeFive.vue'
+import TwoSix from '../views/TwoSix.vue'
+import HardRandom from '../views/HardRandom.vue'
+import Result from '../views/Result.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'StartPage',
+    component: StartPage
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/two-five',
+    name: 'TwoFive',
+    component: TwoFive
+  },
+  {
+    path: '/three-five',
+    name: 'ThreeFive',
+    component: ThreeFive
+  },
+  {
+    path: '/two-six',
+    name: 'TwoSix',
+    component: TwoSix
+  },
+  {
+    path: '/random',
+    name: 'HardRandom',
+    component: HardRandom
+  },
+  {
+    path: '/result',
+    name: 'Result',
+    component: Result
   }
 ]
 
