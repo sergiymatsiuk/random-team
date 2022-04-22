@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown" v-if="showSelectRandom">
     <button
-      class="btn btn-success dropdown-toggle w-100 btn-r"
+      class="btn btn-success dropdown-toggle w-100 fs-3"
       type="button"
       id="dropdownMenuButton1"
       data-bs-toggle="dropdown"

@@ -1,6 +1,6 @@
 <template>
   <div class="start">
-    <h3>{{ title }}</h3>
+    <h3>{{ titleText }}</h3>
   </div>
 </template>
 
@@ -10,18 +10,25 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      title: 'Ви готові до сильної катки?'
+      titles: [
+        'Готові до сильної катки',
+        'Шо команди геть гамно?',
+        'Ооооо сьогодні кіна не буде....'
+      ]
     }
   },
   computed: {
     ...mapState([
       'numberRandom'
-    ])
+    ]),
+    titleText () {
+      if (this.numberRandom >= this.titles.length) {
+        return 'Награли...'
+      }
+      return this.titles[this.numberRandom]
+    }
   },
   watch: {
-    numberRandom (count) {
-      count < 2 ? this.title = 'Шо команди геть гамно?' : this.title = 'Ооооо сьогодні кіна не буде....'
-    }
   }
 }
 </script>
