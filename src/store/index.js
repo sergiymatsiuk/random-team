@@ -5,13 +5,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    typeRandom: [],
     arrayAfterRandom: [],
     showSelectRandom: true,
     numberRandom: 0
   },
   getters: {
+    typeRandom (state) {
+      return state.typeRandom
+    }
   },
   mutations: {
+    SET_TYPE_RANDOM (state, payload) {
+      state.typeRandom = payload
+    },
     SET_FINISH_ARRAY (state, payload) {
       state.arrayAfterRandom = payload
     },
@@ -53,7 +60,7 @@ export default new Vuex.Store({
     },
 
     divisionIntoTeam ({ commit }, payload) {
-      if (payload.length === 5) {
+      if (payload.length >= 5) {
         const finishArr = [[], [], []]
         payload.forEach(el => {
           finishArr[0].push(el[0])

@@ -23,6 +23,7 @@ export default {
   created () {
     this.$store.commit('CHANGE_SELECT_RANDOM', false)
     this.results = this.$store.state.arrayAfterRandom
+    window.scrollTo(0, 0)
   },
   methods: {
     toMain () {

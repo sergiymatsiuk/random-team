@@ -5,3 +5,10 @@ body {
     background-color: $main-green;
     box-sizing: border-box;
 }
+
+.start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+  }

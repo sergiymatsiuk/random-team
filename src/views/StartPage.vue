@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       titles: [
-        'Готові до сильної катки',
+        'Готові до сильної катки?',
         'Шо команди геть гамно?',
         'Ооооо сьогодні кіна не буде....'
       ]
@@ -32,12 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .start {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-  }
-</style>

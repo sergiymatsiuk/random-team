@@ -9,7 +9,7 @@
       {{ title }}
     </button>
     <ul class="dropdown-menu w-100 mt-2">
-      <li v-for="random in typeOfRandom" :key="random.link"
+      <li v-for="(random, idx) in typeOfRandom" :key="idx"
           class="dropdown-item"
           @click="changeRandom(random)">{{ random.title }}</li>
     </ul>
@@ -23,22 +23,33 @@ export default {
   data () {
     return {
       title: 'оберіть рандом!',
+      link: null,
       selectRandom: null,
       typeOfRandom: [
         {
           title: 'дві по 5',
-          link: 'two-five',
+          link: 'team-random',
           type: [4, 4, 2]
         },
         {
           title: 'дві по 6',
-          link: 'two-six',
+          link: 'team-random',
           type: [4, 4, 4]
         },
         {
           title: 'три по 5',
-          link: 'three-five',
+          link: 'team-random',
           type: [3, 3, 3, 3, 3]
+        },
+        {
+          title: 'три по 6',
+          link: 'team-random',
+          type: [3, 3, 3, 3, 3, 3]
+        },
+        {
+          title: 'три по 6++',
+          link: 'team-random',
+          type: [6, 6, 6]
         }
         // {
         //   title: 'рандом',
@@ -51,7 +62,11 @@ export default {
   methods: {
     changeRandom (random) {
       if (this.title !== random.title) {
-        this.$router.push(random.link)
+        if (this.link !== random.link || window.location.pathname === '/') {
+          this.$router.push(random.link)
+          this.link = random.link
+        }
+        this.$store.commit('SET_TYPE_RANDOM', random.type)
         this.title = random.title
       }
     }

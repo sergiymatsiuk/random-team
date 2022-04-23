@@ -1,11 +1,11 @@
 <template>
-  <div class="random-type">
-    <div class="" v-for="(size, idx) in sizes" :key='idx'>
+  <div class="random-type" :key="key">
+    <div v-for="(size, idx) in typeRandom" :key='idx'>
       <r-block
         :size='size'
         :id='idx'
         @change-block='changeBlock'>
-        <h3 class="text-center" v-if="sizes.length !== 1">кошик {{ (idx+1) }}</h3>
+        <h3 class="text-center" v-if="typeRandom.length !== 1">кошик {{ (idx+1) }}</h3>
       </r-block>
       <br>
     </div>
@@ -15,13 +15,14 @@
 
 <script>
 import RBlock from '@/components/R-Block'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      sizes: [4, 4, 4],
       allPlayers: [],
-      isFull: false
+      isFull: false,
+      key: 1
     }
   },
   methods: {
@@ -31,6 +32,7 @@ export default {
     },
     checkIsFull () {
       this.isFull = true
+      console.log(this.allPlayers)
       this.allPlayers.forEach(el => {
         el.forEach(el => {
           if (el.name === '') {
@@ -42,6 +44,16 @@ export default {
     random () {
       this.$store.dispatch('startRandom', this.allPlayers)
       this.$router.push('result')
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'typeRandom'
+    ])
+  },
+  watch: {
+    typeRandom () {
+      this.key++
     }
   },
   components: {
