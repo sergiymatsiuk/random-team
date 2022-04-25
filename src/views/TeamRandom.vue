@@ -1,5 +1,5 @@
 <template>
-  <div class="random-type" :key="key">
+  <div class="random-type" :key="key" id="inputBox">
     <div v-for="(size, idx) in typeRandom" :key='idx'>
       <r-block
         :size='size'
@@ -7,9 +7,8 @@
         @change-block='changeBlock'>
         <h3 class="text-center" v-if="typeRandom.length !== 1">кошик {{ (idx+1) }}</h3>
       </r-block>
-      <br>
     </div>
-    <button class="btn btn-secondary btn-lg w-100" :disabled='!isFull' @click="random">Жеребкування</button>
+    <button class="btn btn-secondary btn-lg w-100 mt-4" :disabled='!isFull' @click="random">Жеребкування</button>
   </div>
 </template>
 
@@ -32,7 +31,6 @@ export default {
     },
     checkIsFull () {
       this.isFull = true
-      console.log(this.allPlayers)
       this.allPlayers.forEach(el => {
         el.forEach(el => {
           if (el.name === '') {

@@ -6,7 +6,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     typeRandom: [],
-    arrayAfterRandom: [],
     showSelectRandom: true,
     numberRandom: 0
   },
@@ -60,12 +59,23 @@ export default new Vuex.Store({
     },
 
     divisionIntoTeam ({ commit }, payload) {
-      if (payload.length >= 5) {
+      if (payload[0].length === 3) {
         const finishArr = [[], [], []]
         payload.forEach(el => {
           finishArr[0].push(el[0])
           finishArr[1].push(el[1])
           finishArr[2].push(el[2])
+        })
+        commit('SET_FINISH_ARRAY', finishArr)
+      } else if (payload[0].length === 6) {
+        const finishArr = [[], [], []]
+        payload.forEach(el => {
+          finishArr[0].push(el[0])
+          finishArr[1].push(el[1])
+          finishArr[2].push(el[2])
+          finishArr[0].push(el[3])
+          finishArr[1].push(el[4])
+          finishArr[2].push(el[5])
         })
         commit('SET_FINISH_ARRAY', finishArr)
       } else {
